@@ -1,6 +1,6 @@
 services:
   docker-runner-01:
-    image: actions_runner:2.338.0
+    image: actions_runner:2.338.2
     container_name: docker_runner_01
     env_file: .env.org
     volumes:
@@ -9,7 +9,7 @@ services:
       - RUNNER_NAME=docker_runner_01
     
   docker-runner-02:
-    image: actions_runner:2.338.0
+    image: actions_runner:2.338.2
     container_name: docker_runner_02
     env_file: .env.org
     volumes:

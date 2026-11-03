@@ -38,8 +38,9 @@ if [ "$REG_TOKEN" = "null" ] || [ -z "$REG_TOKEN" ]; then
     exit 1
 fi
 
+# We disable automatic updates
 echo "Registering runner..."
-./config.sh --url "$REPO_URL" --token "$REG_TOKEN" --name "${RUNNER_NAME}" --labels "${RUNNER_LABELS}" --unattended --replace
+./config.sh --url "$REPO_URL" --token "$REG_TOKEN" --name "${RUNNER_NAME}" --labels "${RUNNER_LABELS}" --unattended --replace --disableupdate
 
 # Dynamic cleanup handler to catch container exits smoothly
 cleanup() {

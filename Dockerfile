@@ -3,7 +3,7 @@ FROM ubuntu:26.04
 
 # Don't ask for user input during install
 ENV DEBIAN_FRONTEND=noninteractive
-ENV RUNNER_VERSION=2.338.0
+ENV RUNNER_VERSION=2.338.2
 
 # Install general dependencies (curl, jq, sudo, etc.)
 RUN apt-get update && apt-get install -y \
