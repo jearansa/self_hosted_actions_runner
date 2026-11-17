@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  github-runner:
+    image: actions_runner:2.338.2
+
+    env_file:
+      - .env.org
+
+    environment:
+      RUNNER_NAME: "docker_runner_{{.Task.Slot}}"
+
+    volumes:
+      - runner-work:/home/runner/_work
+
+    stop_grace_period: 60s
+
+    deploy:
+      replicas: ${RUNNER_REPLICAS:-2}
+
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 120s
+
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: stop-first
+
+      rollback_config:
+        parallelism: 1
+        delay: 10s
+
+volumes:
+  runner-work:
+    name: "github-runner-work-{{.Task.Slot}}"
+    driver: local
