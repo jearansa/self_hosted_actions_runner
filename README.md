@@ -13,3 +13,9 @@ In order to make it work follow the steps:
     - RUNNER_LABELS: whatever labels you are using for your self hosted runners ('Default' works).
     - RUNNER_TYPE: either 'org' or 'repo'. The scripts are checked for 'org', they should work also for 'repo' with minor changes.  
 4. Run ```docker compose up --detach```.
+
+The service can be also deployed in a swarm. Instead of step 4 in the previous list, execute in a shell:
+
+4. Set ```export RUNNER_REPLICAS=NN``` (with NN the number of excepted replicas).
+
+5. Run ```docker stack deploy -c docker-stack.yaml github-runners```
